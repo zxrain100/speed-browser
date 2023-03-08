@@ -1,0 +1,11 @@
+<resources>
+    <string name="facebook_app_id" translatable="false">715651013008494</string>
+    <string name="fb_client_token" translatable="false">0c4e8c176505e5451983893533e86c00</string>
+
+    <string name="app_name">Speed Browser</string>
+    <string name="search_an_address">Search an address…</string>
+    <string name="item_facebook">Facebook</string>
+    <string name="item_amazon">Amazon</string>
+    <string name="item_instagram">Instagram</string>
+    <string name="item_twitter">Twitter</string>
+</resources>
