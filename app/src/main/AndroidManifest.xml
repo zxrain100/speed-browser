@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <application
-        android:name=".SDB"
+        android:name=".sq.SDB"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -21,6 +21,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".sq.SDBMainActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".sn.SDBBroActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".sn.SDBMActivity"
+            android:exported="false" />
+        <activity
+            android:name=".sl.SDBHActivity"
+            android:exported="false" />
 
 
         <!-- admob -->

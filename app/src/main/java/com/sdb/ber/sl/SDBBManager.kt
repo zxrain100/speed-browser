@@ -1,8 +1,13 @@
-package com.sdb.ber
+package com.sdb.ber.sl
 
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.sdb.ber.sq.SDB
+import com.sdb.ber.sn.SDBHistoryDao
+import com.sdb.ber.sn.SDBMark
+import com.sdb.ber.dx.SDBMarkDao
+import com.sdb.ber.dx.SDBHistory
 
 @Database(
     entities = [

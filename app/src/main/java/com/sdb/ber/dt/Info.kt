@@ -1,4 +1,4 @@
-package com.sdb.ber
+package com.sdb.ber.dt
 
 data class Info(
     var url: String,

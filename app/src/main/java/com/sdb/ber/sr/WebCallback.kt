@@ -1,4 +1,4 @@
-package com.sdb.ber
+package com.sdb.ber.sr
 
 interface WebCallback {
 

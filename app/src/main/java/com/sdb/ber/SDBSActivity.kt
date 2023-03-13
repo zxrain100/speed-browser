@@ -4,6 +4,11 @@ import android.animation.ValueAnimator
 import android.content.Intent
 import android.os.Bundle
 import com.sdb.ber.databinding.ActStartBinding
+import com.sdb.ber.dt.AppConfig
+import com.sdb.ber.dt.SDBam
+import com.sdb.ber.sn.SDBBroActivity
+import com.sdb.ber.sq.SDBMainActivity
+import com.sdb.ber.sr.SDBap
 import kotlinx.coroutines.*
 
 class SDBSActivity : BaseActivity() {

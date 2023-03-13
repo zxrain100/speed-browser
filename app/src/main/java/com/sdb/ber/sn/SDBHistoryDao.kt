@@ -1,6 +1,7 @@
-package com.sdb.ber
+package com.sdb.ber.sn
 
 import androidx.room.*
+import com.sdb.ber.dx.SDBHistory
 
 @Dao
 abstract class SDBHistoryDao {

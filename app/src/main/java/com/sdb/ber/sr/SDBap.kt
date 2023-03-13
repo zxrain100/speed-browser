@@ -1,13 +1,16 @@
-package com.sdb.ber
+package com.sdb.ber.sr
 
 import android.util.Base64
+import com.sdb.ber.dx.SDBa
+import com.sdb.ber.SDBau
+import com.sdb.ber.dt.RCHelper
 import org.json.JSONObject
 
 
 object SDBap {
-    const val INDEX = "inter_l"
-    const val HOME = "inter_h"
-    const val NATIVE = "native"
+    const val INDEX = "sdb_inter_s"
+    const val HOME = "sdb_inter_h"
+    const val NATIVE = "sdb_native"
 
     val cacheList = HashMap<String, SDBa>()
     fun hasCache(key: String): Boolean {
@@ -39,7 +42,7 @@ object SDBap {
 
     fun getRequestLists(sk: String): List<SDBau> {
         try {
-            val s = RCHelper.instance.getPlbCfg()
+            val s = RCHelper.instance.getSDBCfg()
             val json = JSONObject(String(Base64.decode(s.toByteArray(), Base64.DEFAULT)))
 //            val mode = json.getBoolean("sdb_mode")
 //            AppConfig.instance.setSafeMode(mode)
@@ -58,6 +61,7 @@ object SDBap {
                     val t = when (obj2.optString("sdb_type")) {
                         "nav" -> 0
                         "inter" -> 1
+                        "open" -> 2
                         else -> 1
                     }
                     au.add(SDBau(id, priority, t))

@@ -1,11 +1,11 @@
-package com.sdb.ber
+package com.sdb.ber.sn
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = SDBHistory.Table.TABLE_NAME)
-data class SDBHistory(
+@Entity(tableName = SDBMark.Table.TABLE_NAME)
+data class SDBMark(
     /**
      * 页面url
      */
@@ -26,6 +26,6 @@ data class SDBHistory(
 
 ) {
     object Table {
-        const val TABLE_NAME = "sdb_history"
+        const val TABLE_NAME = "sdb_mark"
     }
 }

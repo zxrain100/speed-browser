@@ -1,4 +1,4 @@
-package com.sdb.ber
+package com.sdb.ber.dx
 
 import android.content.Context
 import android.content.Intent
@@ -7,6 +7,9 @@ import android.graphics.Bitmap
 import android.net.Uri
 import android.util.Patterns
 import android.webkit.*
+import com.sdb.ber.sl.SDBBManager
+import com.sdb.ber.sn.SDBMark
+import com.sdb.ber.sr.WebCallback
 import java.net.URISyntaxException
 
 class WebHelper(val callback: WebCallback) {

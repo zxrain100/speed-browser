@@ -1,0 +1,40 @@
+{
+  "sdb_mode": true,
+  "sdb_config": [
+    {
+      "sdb_key": "sdb_inter_s",
+      "sdb_ids": [
+        {
+          "sdb_id": "ca-app-pub-3940256099942544/1033173712",
+          "sdb_priority": 1,
+          "sdb_type": "inter"
+        },
+        {
+          "sdb_id": "ca-app-pub-3940256099942544/3419835294",
+          "sdb_priority": 2,
+          "sdb_type": "open"
+        }
+      ]
+    },
+    {
+      "sdb_key": "sdb_inter_h",
+      "sdb_ids": [
+        {
+          "sdb_id": "ca-app-pub-3940256099942544/1033173712",
+          "sdb_priority": 1,
+          "sdb_type": "inter"
+        }
+      ]
+    },
+    {
+      "sdb_key": "sdb_native",
+      "sdb_ids": [
+        {
+          "sdb_id": "ca-app-pub-3940256099942544/2247696110",
+          "sdb_priority": 1,
+          "sdb_type": "nav"
+        }
+      ]
+    }
+  ]
+}

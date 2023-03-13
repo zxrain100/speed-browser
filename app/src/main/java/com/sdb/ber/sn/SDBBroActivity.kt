@@ -1,4 +1,4 @@
-package com.sdb.ber
+package com.sdb.ber.sn
 
 import android.app.Activity
 import android.content.Intent
@@ -11,7 +11,14 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.view.isVisible
 import com.bumptech.glide.Glide
+import com.sdb.ber.*
 import com.sdb.ber.databinding.ActBrowserBinding
+import com.sdb.ber.dt.SDBam
+import com.sdb.ber.dx.SDBa
+import com.sdb.ber.dx.WebHelper
+import com.sdb.ber.sl.SDBHActivity
+import com.sdb.ber.sr.SDBap
+import com.sdb.ber.sr.WebCallback
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -96,7 +103,6 @@ class SDBBroActivity : BaseActivity(), WebCallback, View.OnClickListener {
         }
         binding.webView.visibility = View.VISIBLE
         binding.homePage.isVisible = false
-        binding.itemLayout.isVisible = false
         binding.webPage.isVisible = true
         if (webHelper.isUrl(str)) {
             binding.webView.loadUrl(str)
@@ -114,8 +120,9 @@ class SDBBroActivity : BaseActivity(), WebCallback, View.OnClickListener {
         binding.webView.visibility = View.GONE
         binding.inputUrl.setText("")
         binding.webPage.isVisible = false
-        binding.itemLayout.isVisible = true
         binding.homePage.isVisible = true
+        binding.preImg.setImageResource(R.mipmap.pre_1)
+        binding.nextImg.setImageResource(R.mipmap.next_1)
         loadingType = 0
     }
 
@@ -128,6 +135,20 @@ class SDBBroActivity : BaseActivity(), WebCallback, View.OnClickListener {
         }
     }
 
+    private fun updatePreAndNextStatus() {
+        if (binding.webView.canGoBack()) {
+            binding.preImg.setImageResource(R.mipmap.pre)
+        } else {
+            binding.preImg.setImageResource(R.mipmap.pre_1)
+        }
+
+        if (binding.webView.canGoForward()) {
+            binding.nextImg.setImageResource(R.mipmap.next)
+        } else {
+            binding.nextImg.setImageResource(R.mipmap.next_1)
+        }
+    }
+
     override fun onWebStarted(url: String) {
         binding.webProgress.isVisible = true
         binding.webProgress.progress = 0
@@ -136,17 +157,10 @@ class SDBBroActivity : BaseActivity(), WebCallback, View.OnClickListener {
             binding.search.setImageResource(R.mipmap.search)
             binding.inputUrl.setText("")
         } else {
-            binding.search.setImageResource(R.mipmap.cancel)
-            binding.inputUrl.setText(url)
-        }
-
-        if (url == "about:blank") {
-            binding.search.setImageResource(R.mipmap.search)
-            binding.inputUrl.setText("")
-        } else {
             loadingType = 1
             binding.search.setImageResource(R.mipmap.cancel)
             binding.inputUrl.setText(url)
+            updatePreAndNextStatus()
         }
 
         updateFavIcon(url)
@@ -193,6 +207,7 @@ class SDBBroActivity : BaseActivity(), WebCallback, View.OnClickListener {
             binding.itemTwitter -> startLoad("https://www.twitter.com/")
 
             binding.pre -> {
+                updatePreAndNextStatus()
                 if (binding.webPage.visibility == View.VISIBLE) {
                     if (binding.webView.canGoBack()) {
                         val m = binding.webView.copyBackForwardList()
@@ -209,6 +224,7 @@ class SDBBroActivity : BaseActivity(), WebCallback, View.OnClickListener {
                 }
             }
             binding.next -> {
+                updatePreAndNextStatus()
                 if (binding.webView.canGoForward()) {
                     binding.webView.goForward()
                 }
@@ -277,6 +293,11 @@ class SDBBroActivity : BaseActivity(), WebCallback, View.OnClickListener {
                 }
             }
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        this.ad?.onDestroy()
     }
 
 }

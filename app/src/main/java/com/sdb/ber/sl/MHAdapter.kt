@@ -1,4 +1,4 @@
-package com.sdb.ber
+package com.sdb.ber.sl
 
 import android.net.Uri
 import android.view.LayoutInflater
@@ -9,6 +9,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.bumptech.glide.request.RequestOptions
+import com.sdb.ber.dt.Info
+import com.sdb.ber.R
+import com.sdb.ber.sr.SDBUtils
 import com.sdb.ber.databinding.ListItemBinding
 
 class MHAdapter : ListAdapter<Info, MHAdapter.ItemHolder>(InfoDiffCallback) {

@@ -1,4 +1,4 @@
-package com.sdb.ber
+package com.sdb.ber.sq
 
 import android.app.Activity
 import android.content.Intent
@@ -8,7 +8,15 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.view.isVisible
 import com.bumptech.glide.Glide
+import com.sdb.ber.*
 import com.sdb.ber.databinding.ActHomeBinding
+import com.sdb.ber.dt.AppConfig
+import com.sdb.ber.dt.SDBam
+import com.sdb.ber.dx.SDBa
+import com.sdb.ber.sl.SDBHActivity
+import com.sdb.ber.sn.SDBBroActivity
+import com.sdb.ber.sn.SDBMActivity
+import com.sdb.ber.sr.SDBap
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

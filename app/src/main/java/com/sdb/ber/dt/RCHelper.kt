@@ -1,6 +1,7 @@
-package com.sdb.ber
+package com.sdb.ber.dt
 
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
+import com.sdb.ber.R
 
 class RCHelper {
     companion object {
@@ -9,7 +10,7 @@ class RCHelper {
 
     private lateinit var config: FirebaseRemoteConfig
 
-    fun getPlbCfg() = config.getString("plb_cfg")
+    fun getSDBCfg() = config.getString("sdb_cfg")
 
     fun initAndFetchAndActivate() {
         config = FirebaseRemoteConfig.getInstance()

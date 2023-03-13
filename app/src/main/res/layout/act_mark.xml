@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/sh_app_bg"
     android:orientation="vertical"
-    tools:context=".SDBMActivity">
+    tools:context=".sn.SDBMActivity">
 
     <View
         android:id="@+id/statusBar"

@@ -1,7 +1,8 @@
-package com.sdb.ber
+package com.sdb.ber.sr
 
 import android.net.Uri
 import android.util.TypedValue
+import com.sdb.ber.sq.SDB
 
 object SDBUtils {
 

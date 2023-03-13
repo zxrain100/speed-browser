@@ -1,8 +1,9 @@
-package com.sdb.ber
+package com.sdb.ber.dx
 
 import android.app.Activity
 import com.google.android.gms.ads.AdError
 import com.google.android.gms.ads.FullScreenContentCallback
+import com.google.android.gms.ads.appopen.AppOpenAd
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.nativead.NativeAd
 
@@ -12,19 +13,26 @@ class SDBa {
     private var exTime: Long = 0
     private var nav: NativeAd? = null
     private var inter: InterstitialAd? = null
+    private var open: AppOpenAd? = null
     private var closeListener: (() -> Unit)? = null
     private var isAva = true
     private var type: Int = 0
 
-    constructor(inter: InterstitialAd) {
+    constructor(nat: NativeAd) {
         this.type = 0
+        this.nav = nat
+        exTime = System.currentTimeMillis() + 60 * 60 * 1000
+    }
+
+    constructor(inter: InterstitialAd) {
+        this.type = 1
         this.inter = inter
         exTime = System.currentTimeMillis() + 60 * 60 * 1000
     }
 
-    constructor(nat: NativeAd) {
-        this.type = 1
-        this.nav = nat
+    constructor(open: AppOpenAd) {
+        this.type = 2
+        this.open = open
         exTime = System.currentTimeMillis() + 60 * 60 * 1000
     }
 
@@ -41,7 +49,11 @@ class SDBa {
             }
 
             override fun onAdShowedFullScreenContent() {
-                inter = null
+                if (type == 2) {
+                    open = null
+                } else if (type == 1) {
+                    inter = null
+                }
             }
         }
 
@@ -60,11 +72,19 @@ class SDBa {
 
     fun show(activity: Activity) {
         try {
-            if (inter == null) {
-                closeListener?.invoke()
+            if (type == 2) {
+                if (open == null) {
+                    closeListener?.invoke()
+                }
+                open?.fullScreenContentCallback = mFullScreenContentCallback
+                open?.show(activity)
+            } else {
+                if (inter == null) {
+                    closeListener?.invoke()
+                }
+                inter?.fullScreenContentCallback = mFullScreenContentCallback
+                inter?.show(activity)
             }
-            inter?.fullScreenContentCallback = mFullScreenContentCallback
-            inter?.show(activity)
 
         } catch (_: Exception) {
             closeListener?.invoke()
@@ -76,10 +96,13 @@ class SDBa {
      */
     fun isAva(): Boolean {
         when (type) {
-            1 -> if (nav == null) {
+            0 -> if (nav == null) {
                 return false
             }
-            0 -> if (inter == null) {
+            1 -> if (inter == null) {
+                return false
+            }
+            2 -> if (open == null) {
                 return false
             }
         }
@@ -91,6 +114,7 @@ class SDBa {
         nav?.destroy()
         inter = null
         nav = null
+        open = null
     }
 
 }

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/sh_app_bg"
     android:orientation="vertical"
-    tools:context=".SDBBroActivity">
+    tools:context=".sn.SDBBroActivity">
 
     <View
         android:id="@+id/statusBar"
@@ -27,6 +27,7 @@
             android:id="@+id/input_url"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:autofillHints=""
             android:background="@drawable/url_et_bg"
             android:hint="@string/search_an_address"
             android:imeOptions="actionSearch"
@@ -38,8 +39,7 @@
             android:textColor="#5B5B5B"
             android:textColorHint="#5B5B5B"
             android:textSize="14sp"
-            tools:ignore="TextFields"
-            android:autofillHints="" />
+            tools:ignore="TextFields" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/add_mark"
@@ -97,7 +97,6 @@
             android:layout_height="match_parent"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:layout_alignParentBottom="true"
             android:layout_marginBottom="76dp">
 
             <LinearLayout
@@ -163,17 +162,25 @@
 
             </LinearLayout>
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/adDefault"
-                android:layout_width="match_parent"
-                android:layout_height="226dp"
-                android:layout_gravity="bottom"
-                android:scaleType="fitXY"
-                app:srcCompat="@mipmap/ic_ad_def" />
 
-            <include
-                android:id="@+id/adView"
-                layout="@layout/sdb_a_layout" />
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/adDefault"
+                    android:layout_width="match_parent"
+                    android:layout_height="226dp"
+                    android:scaleType="fitXY"
+                    app:srcCompat="@mipmap/ic_ad_def" />
+
+                <include
+                    android:id="@+id/adView"
+                    layout="@layout/sdb_a_layout" />
+
+            </FrameLayout>
+
 
         </FrameLayout>
 
@@ -193,6 +200,7 @@
             android:layout_weight="1">
 
             <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/preImg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -207,6 +215,7 @@
             android:layout_weight="1">
 
             <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/nextImg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"

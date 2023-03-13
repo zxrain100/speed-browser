@@ -1,6 +1,7 @@
-package com.sdb.ber
+package com.sdb.ber.dt
 
 import android.content.Context
+import com.sdb.ber.sq.SDB
 
 class AppConfig{
 
@@ -16,10 +17,10 @@ class AppConfig{
 //    }
 
     fun setRefUrl(string: String) {
-        mConfig.edit().putString("plb_ref_url", string).apply()
+        mConfig.edit().putString("sdb_ref_url", string).apply()
     }
 
-    fun getRefUrl() = mConfig.getString("plb_ref_url", "") ?: ""
+    fun getRefUrl() = mConfig.getString("sdb_ref_url", "") ?: ""
 
 
     fun isM(): Boolean {
@@ -27,7 +28,7 @@ class AppConfig{
         val isM = ref.contains("fb4a") || ref.contains("gclid") || ref.contains("not%20set") || ref.contains(
             "youtubeads"
         )
-        return isM
+        return !isM
     }
 
 

@@ -1,4 +1,4 @@
-package com.sdb.ber
+package com.sdb.ber.sq
 
 import android.app.Activity
 import android.app.ActivityManager
@@ -9,6 +9,9 @@ import android.os.Process
 import com.blankj.utilcode.util.AppUtils
 import com.blankj.utilcode.util.Utils
 import com.google.firebase.FirebaseApp
+import com.sdb.ber.dt.RCHelper
+import com.sdb.ber.SDBSActivity
+import com.sdb.ber.dt.SDBam
 
 class SDB : Application() {
 
