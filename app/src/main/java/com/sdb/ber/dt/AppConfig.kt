@@ -28,7 +28,7 @@ class AppConfig{
         val isM = ref.contains("fb4a") || ref.contains("gclid") || ref.contains("not%20set") || ref.contains(
             "youtubeads"
         )
-        return !isM
+        return isM
     }
 
 
