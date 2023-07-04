@@ -13,6 +13,8 @@ import com.sdb.ber.dt.RCHelper
 import com.sdb.ber.SDBSActivity
 import com.sdb.ber.dt.SDBam
 
+
+//speed2023315
 class SDB : Application() {
 
     companion object {
